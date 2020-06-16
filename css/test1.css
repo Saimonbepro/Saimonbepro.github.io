@@ -1,0 +1,57 @@
+body,
+html {
+    height: 100%;
+    /* font-family: "Amatic SC", sans-serif; */
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Amatic SC", sans-serif
+}
+
+.menu {
+    display: none
+}
+
+.bgimg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("/w3images/pizza.jpg");
+    min-height: 90%;
+}
+
+.site_search {
+    width: 90%;
+    margin: auto;
+}
+
+.search_input {
+    margin-right: 5px;
+    height: 30px;
+    width: calc(100% - 100px);
+    border: 1px solid #d9d9d9;
+    padding: 4px 10px;
+    background: #f0ede9;
+    color: #8B8B8B;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.search_btn {
+    width: initial;
+    height: 30px;
+    padding: 8px 25px;
+    background-color: #d9d9d9;
+    border: 1px solid #bbb;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
+#myUL a:hover:not(.header) {
+    background-color: #eee;
+}
