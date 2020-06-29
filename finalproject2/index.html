@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta namecst="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Finalproject</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="./css/img.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="CSS2/jquery-ui.min.css">
+
+
+    <script src="js2/jquery-3.4.1.min.js"></script>
+    <script src="js2/jquery-ui.min.js"></script>
+    <script src="js2/handlebars-v4.4.3.js"></script>
+    <!-- create css for todolist and account -->
+    <style>
+        .panel2 {
+            width: 300px;
+            background-color: rgb(101, 233, 189);
+            padding: 40px;
+            margin: 0 auto;
+        }
+
+        #todo-list ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        #todo-list li {
+            display: flex;
+            padding: 10px;
+        }
+
+        #todo-list li.complete .checkbox {
+            background-color: #777;
+        }
+
+        #todo-list li:hover {
+            background-color: rgb(219, 247, 97);
+        }
+
+        #todo-list .checkbox {
+            border-radius: 30%;
+            width: 35px;
+            height: 35px;
+            background-color: hsl(204, 86%, 66%);
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        #todo-list .content {
+            flex: 1;
+        }
+
+        #todo-list li.complete .content {
+            text-decoration: line-through;
+        }
+
+        #todo-list .actions>* {
+            padding: 0 10px;
+            cursor: pointer;
+        }
+
+        #buylist {
+            display: inline-block;
+            padding: 20px;
+            border: solid 4px #004E89;
+            background-color: #FFFFFA;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            width: 328px;
+        }
+
+
+        #item_list {
+            margin-top: 10px;
+            padding: 5px;
+        }
+
+        .buyitem {
+            padding: 10px;
+            margin-top: 10px;
+            font-weight: 900;
+            border: solid 3px;
+            list-style: none;
+        }
+
+        .buyitem .dt1 {
+            display: inline-block;
+            position: absolute;
+            padding-left: 8px;
+            padding-right: 8px;
+            background-color: #2cbe9f;
+        }
+
+        .buyitem input {
+            width: 100px;
+            padding: 5px;
+            border: solid 3px;
+        }
+
+        .buyitem .price {
+            display: inline-block;
+            position: absolute;
+            padding-left: 8px;
+            padding-right: 8px;
+            background-color: rgb(111, 241, 224);
+        }
+
+        .buyitem .price:before {
+            content: "$ ";
+        }
+
+        .buyitem .del_btn {
+            display: inline-block;
+            position: absolute;
+            padding: 0px 6px;
+            cursor: pointer;
+        }
+
+        .buyitem .del_btn:hover {
+            background-color: hsl(128, 100%, 60%);
+            color: white;
+        }
+
+        .addbtn {
+            cursor: pointer;
+            margin-left: 10px;
+            padding: 5px;
+            border: solid 3px #004E89;
+        }
+
+        .addbtn:hover {
+            background-color: hsl(234, 100%, 60%);
+            color: white;
+        }
+
+        .panel {
+            padding: 15px;
+        }
+
+        .totalprice {
+            background-color: hsl(172, 100%, 60%);
+            color: white;
+        }
+
+        .totalprice .price {
+            background-color: transparent;
+        }
+    </style>
+</head>
+<!-- main content -->
+
+<body>
+    <div id="box">
+        <!-- set title -->
+        <p class="titledesign" style="color: #fdf7f7;border-radius: 5px;">Hello World Ya</p>
+        <div>
+            <div style="display:inline-block;">
+                <a class="link-title" href="https://www.clocktab.com/" target="_blank">
+                    <p style="text-align: left;color:white;line-height:0.5px;">
+                        <div id="clock"></div>
+                    </p>
+
+                </a></div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp
+            <div style="display: inline-block;">
+                <a class="link-title">
+                    <p style="text-align: left;color:white;line-height:0.5px;font-size: 12px;">... </p>
+                </a></div>
+
+            <div style="display: inline-block;">
+                <a class="link-title">
+                    <span class="material-icons"
+                        style="text-align: left;color:white;line-height:0.5px;font-size: 12px;">bluetooth_connected
+                    </span>
+                </a></div>
+
+            <div style="display: inline-block;">
+                <a class="link-title">
+                    <span class="material-icons"
+                        style="text-align: left;color:white;line-height:0.5px;font-size: 12px;">alarm
+                    </span>
+                </a></div>
+
+            <div style="display: inline-block;">
+                <a class="link-title">
+                    <span class="material-icons"
+                        style="text-align: left;color:white;line-height:0.5px;font-size: 12px;">signal_cellular_alt
+                    </span>
+                </a></div>
+            <div style="display: inline-block;">
+                <a class="link-title">
+                    <span class="material-icons"
+                        style="text-align: left;color:white;line-height:0.5px;font-size: 12px;">battery_full
+                    </span>
+                </a></div>
+
+
+        </div>
+        <!-- 1st page -->
+        <div class="mySlides">
+            <div class=" img-fillet img-line">
+                <a class="link" href="https://line.me/en/" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">LINE</p>
+            </div>
+            <div class="separate"></div>
+            <div class="img-fillet img-messenger">
+                <a class="link" href="https://www.messenger.com/" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">Messenger</p>
+            </div>
+            <div class="separate"></div>
+            <div class="img-fillet img-google">
+                <a class="link" href="https://www.google.com/" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">Google </p>
+            </div>
+            <div class="separate"></div>
+            <div class="img-fillet img-wechat">
+                <a class="link" href="https://www.wechat.com/en/" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">Wechat</p>
+            </div>
+            <div class="separate-vt"></div>
+            <div class="img-fillet img-whatsapp">
+                <a class="link" href="https://www.whatsapp.com/" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">Whatsapp</p>
+            </div>
+            <div class="separate"></div>
+            <div class="img-fillet img-ig">
+                <a class="link" href="https://play.google.com/store/apps/details?id=com.instagram.android&hl=en"
+                    target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">Instagram</p>
+            </div>
+            <div class="separate"></div>
+            <div class="img-fillet img-googlemap">
+                <a class="link" href="https://www.google.com.tw/maps" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">Google Map</p>
+            </div>
+            <div class="separate"></div>
+            <div class="img-fillet img-fb">
+                <a class="link" href="https://about.fb.com/" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">Facebook</p>
+            </div>
+        </div>
+
+        <!--  2nd pages-->
+        <div class="mySlides">
+            <div class=" img-fillet img-line">
+                <a class="link" href="https://line.me/en/" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">LINE</p>
+            </div>
+            <div class="separate"></div>
+            <div class="img-fillet img-messenger">
+                <a class="link" href="https://www.messenger.com/" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">Messenger</p>
+            </div>
+            <div class="separate"></div>
+            <div class="img-fillet img-google">
+                <a class="link" href="https://www.google.com/" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">Google </p>
+            </div>
+            <div class="separate"></div>
+            <div class="img-fillet img-wechat">
+                <a class="link" href="https://www.wechat.com/en/" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">Wechat</p>
+            </div>
+            <div class="separate-vt"></div>
+            <div class="img-fillet img-whatsapp">
+                <a class="link" href="https://www.whatsapp.com/" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">Whatsapp</p>
+            </div>
+            <div class="separate"></div>
+            <div class="img-fillet img-googlemap">
+                <a class="link" href="https://www.google.com.tw/maps" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">Google Map</p>
+            </div>
+            <div class="separate"></div>
+            <div class="img-fillet img-fb">
+                <a class="link" href="https://about.fb.com/" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">Facebook</p>
+            </div>
+        </div>
+        <!-- 3rd pages -->
+        <div class="mySlides">
+
+            <div class=" img-fillet img-line">
+                <a class="link" href="https://line.me/en/" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">LINE</p>
+            </div>
+            <div class="separate"></div>
+            <div class="img-fillet img-messenger">
+                <a class="link" href="https://www.messenger.com/" target="_blank"></a>
+                <p style="text-align: center;color:white;line-height:0.5px;font-size: 10px;">Messenger</p>
+            </div>
+
+        </div>
+        <!-- 4th pages -->
+        <div class="mySlides">
+
+            <div id="buylist" style="font-size: 12px;">
+                <h1>Accounting記帳本</h1>
+                <div class="buyitem panel">
+                    <laybal>消費項目</laybal>
+                    <input id="input_name" placeholder="品項" />
+                    <div style="margin:2px;"></div>
+                    <labal>日期</labal>
+                    <input id="input_dt" placeholder="2020/03/13" />
+                    <labal>價錢</labal>
+                    <input id="input_price" placeholder="123" />
+                    <div style="margin:13px;"></div><span class="addbtn">+新增</span>
+                </div>
+                <div id="item_list"></div>
+            </div>
+        </div>
+        <!-- 5th pages -->
+        <div class="mySlides">
+            <div class="panel2">
+                <h1>代辦事項</h1>
+                <div id="todo-list">
+                    <ul>
+                        <li class="complete">
+                            <div class="checkbox"></div>
+                            <div class="content">記得去公園</div>
+                            <div class="actions">
+                                <div class="delete">Delete</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox"></div>
+                            <div class="content">記得拿快遞</div>
+                            <div class="actions">
+                                <div class="delete">Delete</div>
+                            </div>
+                        </li>
+
+                        <li class="new">
+                            <div class="checkbox"></div>
+                            <div class="content" contenteditable="true"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <script id="todo-list-item-template" type="text/x-handlebars-template">
+                <li class="{{#if is_complete}}complete{{/if}}">
+                <div class="checkbox"></div>
+                <div class="content">{{content}}</div>
+                <div class="actions">
+                    <div class="delete">Delete</div>
+                </div>
+                </li>
+            </script>
+        </div>
+        <p class="bottomdesign"></p>
+    </div>
+
+    <!-- slide pages-->
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+        // set time
+        function currentTime() {
+            var date = new Date(); /* creating object of Date class */
+            var yr = date.getFullYear();
+            var mnth = date.getMonth();
+            var dates = date.getDate();
+            var hour = date.getHours();
+            var min = date.getMinutes();
+            var sec = date.getSeconds();
+            hour = updateTime(hour);
+            min = updateTime(min);
+            sec = updateTime(sec);
+            document.getElementById("clock").innerText = yr + "/" + mnth + "/" + dates + "   " + hour + " : " + min +
+                " : " +
+                sec; /* adding time to the div */
+            // 
+            var t = setTimeout(function () {
+                currentTime()
+            }, 1000); /* setting timer */
+        }
+
+        function updateTime(k) {
+            if (k < 10) {
+                return "0" + k;
+            } else {
+                return k;
+            }
+        }
+
+        currentTime(); /* calling currentTime() function */
+    </script>
+    <!--account script  -->
+    <script>
+        var costlist = {};
+        costlist.namecst = "MY Account LIST";
+        costlist.time = "2020/06/25";
+        costlist.list = [{
+                namecst: "早餐",
+                price: 100,
+                date1: "2020/03/13"
+            },
+            {
+                namecst: "午餐",
+                price: 900,
+                date1: "2020/04/13"
+            }
+        ];
+
+        var item_html =
+            "<li id={{id}} class='buyitem'>{{num}}.{{item}}<div class='price'>{{price}}</div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<div class='dt1'>{{date1}}</div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<div id={{del_id}} class='del_btn'>刪除</div></li>";
+
+        var total_html = "<li class='buyitem totalprice'>總價<div class='price'>{{price}}</div></li>";
+
+        function showlist() {
+            $("#item_list").html("");
+            var total_priceset = 0;
+            for (var i = 0; i < costlist.list.length; i++) {
+                var item = costlist.list[i];
+                var del_item_idst = "del_buyitem_" + i
+                var item_idsh = "buyitem_" + i
+                total_priceset += parseInt(item.price);
+                var current_item_htmlshw =
+                    item_html.replace("{{num}}", i + 1)
+                    .replace("{{item}}", item.namecst)
+                    .replace("{{id}}", item_idsh)
+                    .replace("{{del_id}}", del_item_idst)
+                    .replace("{{price}}", item.price).replace("{{date1}}", item.date1);
+
+                $("#item_list").append(current_item_htmlshw)
+                $("#" + del_item_idst).click(
+                    function () {
+                        remove_item(item_idsh);
+                    })
+            };
+
+
+            var current_price_html =
+                total_html.replace("{{price}}", total_priceset)
+            $("#item_list").append(current_price_html);
+        }
+        showlist();
+
+
+        $(".addbtn").click(function () {
+            costlist.list.push({
+                namecst: $("#input_name").val(),
+                price: $("#input_price").val(),
+                date1: $("#input_dt").val()
+            });
+            $("#input_name").val(""),
+                $("#input_price").val(""), $("#input_dt").val();
+            showlist();
+        });
+
+        function remove_item(id) {
+            costlist.list.splice(id, 1);
+            showlist();
+        }
+    </script>
+    <!-- todolist script -->
+    <script>
+        var source = $('#todo-list-item-template').html()
+        var todoTemplate = Handlebars.compile(source)
+
+        // enter editor mode
+        $('#todo-list')
+            .on('dblclick', '.content', function (event) {
+                $(this).prop('contenteditable', true).focus()
+            })
+            .on('blur', '.content', function (event) {
+                var isNew = $(this).closest('li').is('.new')
+                if (isNew) {
+                    // create todo list
+                    var todo = $(event.currentTarget).text()
+                    todo = todo.trim()
+
+                    if (todo.length > 0) {
+                        todo = {
+                            is_complete: false,
+                            content: todo,
+                        }
+                        var li = todoTemplate(todo);
+                        $(event.currentTarget).closest('li').before(li)
+                    }
+                    // clear new todo list item
+                    $(event.currentTarget).empty()
+                } else {
+                    // update todo list
+                    $(this).prop('contenteditable', false)
+                }
+            })
+            // delete
+            .on('click', '.delete', function (event) {
+                var result = confirm('Are you sure to delete items')
+                if (result) {
+                    $(this).closest('li').remove()
+                }
+            })
+            // complete
+            .on('click', '.checkbox', function (event) {
+                $(this).closest('li').toggleClass('complete')
+            })
+
+        $('#todo-list').find('ul').sortable({
+            items: 'li:not(.new)'
+        })
+    </script>
+
+</body>
+
+</html>
