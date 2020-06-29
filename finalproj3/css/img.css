@@ -87,7 +87,7 @@
     padding: 10px;
     border-radius: 15px;
     /* background-image: url(backgroundimg1.jpg); */
-    background-image: url(/backgroundimg1.jpg);
+    background-image: url(backgroundimg1.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -120,56 +120,56 @@
 }
 
 .img-line {
-    background-image: url(/linelogo.jpg);
+    background-image: url(linelogo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 .img-messenger {
-    background-image: url(/messengerlogo.png);
+    background-image: url(messengerlogo.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 .img-google {
-    background-image: url(/Google_logo.jpg);
+    background-image: url(Google_logo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 .img-wechat {
-    background-image: url(/wechat-logo.png);
+    background-image: url(wechat-logo.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 .img-whatsapp {
-    background-image: url(/whatsapp-logo.png);
+    background-image: url(whatsapp-logo.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 .img-googlemap {
-    background-image: url(/ggl-map.png);
+    background-image: url(ggl-map.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 .img-ig {
-    background-image: url(/ig-logo.png);
+    background-image: url(ig-logo.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 .img-fb {
-    background-image: url(/fb-logo.png);
+    background-image: url(fb-logo.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
