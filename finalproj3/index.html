@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta namecst="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Finalproject</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -162,7 +162,8 @@
             <div style="display:inline-block;">
                 <a class="link-title" href="https://www.clocktab.com/" target="_blank">
                     <p style="text-align: left;color:white;line-height:0.5px;">
-                        <div id="clock"></div>
+                        <div style="font-size: 10px;color:white; " class="date">
+                        </div>
                     </p>
 
                 </a></div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -307,7 +308,7 @@
                     <div style="margin:2px;"></div>
                     <labal>日期</labal>
                     <input id="input_dt" placeholder="2020/03/13" />
-                     <div style="margin:2px;"></div>
+                    <div style="margin:2px;"></div>
                     <labal>價錢</labal>
                     <input id="input_price" placeholder="123" />
                     <div style="margin:13px;"></div><span class="addbtn">+新增</span>
@@ -542,7 +543,25 @@
             items: 'li:not(.new)'
         })
     </script>
+    <script>
+        function getDate() {
+            var today = new Date();
+            var date = today.getFullYear() + "/" + twoDigits(today.getMonth() + 1) + "/" + twoDigits(today.getDate()) +
+                " ";
+            var week = " 星期" + "日一二三四五六 ".charAt(today.getDay());
+            var time = twoDigits(today.getHours()) + ":" + twoDigits(today.getMinutes()) + ":" + twoDigits(today
+                .getSeconds());
+            $(".date").html(date + week + time);
+        }
 
+        function twoDigits(val) {
+            if (val < 10) return "0" + val;
+            return val;
+        }
+        $(function () {
+            setInterval(getDate, 1000);
+        });
+    </script>
 </body>
 
 </html>
