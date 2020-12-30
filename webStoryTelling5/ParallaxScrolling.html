@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Parallax vertical</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/sense.css">
+
+
+    <style>
+        #div1 {
+            background-image: url("css/01/01-1%20background.png");
+        }
+
+        #div2 {
+            background-image: url("css/02/02-1%20background.png");
+        }
+
+        #div3 {
+            background-image: url("css/03/03-1%20background.png");
+        }
+
+
+        #div1,
+        #div2,
+        #div3,
+        #div4,
+        #div5 {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <div class="container-fluid" style="background-color:black;height:100vh;">
+    </div>
+    <div id="div1" class="container-fluid innershadow1" style="background-color:black;height:200vh;position:relative;">
+        <img class="scrollable dropshadow1" data-top=0 data-top2=70 data-left=25 data-left2=35 data-width=20 data-width2=30 src="css/01/01-4%20tree.png" style="position:absolute;width:20%;top:15%;left:25%;filter:grayscale(.3) blur(0px);">
+        <img class="scrollable dropshadow1" data-top=0 data-top2=60 data-left=75 data-left2=35 data-width=20 data-width2=30 src="css/01/01-4%20tree.png" style="position: absolute;width: 23.242%;top: 22.6938%;
+    left: 73.242%;
+    filter: grayscale(0.3) blur(0px);">
+        <img class="scrollable dropshadow1" data-top=20 data-top2=80 data-left=70 data-left2=40 data-width=30 data-width2=40 src="css/01/01-2%20land1.png" style="position:absolute;width:30%;top:20%;left:40%;">
+        <img class="scrollable dropshadow1" data-top=20 data-top2=80 data-left=70 data-left2=40 data-width=30 data-width2=40 src="css/01/01-4%20tree.png" style="position:absolute;width:30%;top:20%;left:50%;">
+        <img class="scrollable dropshadow1" data-top=20 data-top2=80 data-left=70 data-left2=40 data-width=30 data-width2=40 src="css/01/01-3%20land2.png" style="position:absolute;width:30%;top:20%;left:40%;">
+        <img class="scrollable dropshadow1" data-top=20 data-top2=80 data-left=70 data-left2=40 data-width=30 data-width2=40 src="css/01/01-5%20title.png" style="position:absolute;width:30%;top:20%;left:40%;">
+        <img class="scrollable dropshadow1" data-top=20 data-top2=80 data-left=70 data-left2=40 data-width=30 data-width2=40 src="css/01/01-6%20plastic.png" style="position:absolute;width:30%;top:20%;left:40%;">
+
+    </div>
+    <div class="container-fluid" style="background-color:rgba(0,0,0,0.5);min-height: 1800px"></div>
+    <div id="div2" class="container-fluid innershadow1" style="background-color:black;height:200vh;position:relative;">
+        <img class="scrollable dropshadow1" data-top=0 data-top2=65 data-left=0 data-left2=45 data-width=20 data-width2=30 src="css/02/02-2%20oil%20tank.png" style="position:absolute;width:110%;top:0%;left:0%;filter:grayscale(.3) blur(0px);">
+        <img class="scrollable dropshadow1" data-top=0 data-top2=65 data-left=0 data-left2=45 data-width=20 data-width2=30 src="css/02/02-5%20top%20land.png" style="position:absolute;width:110%;top:0%;left:0%;filter:grayscale(.3) blur(0px);">
+        <img class="scrollable dropshadow1" data-top=15 data-top2=80 data-left=15 data-left2=50 data-width=30 data-width2=40 src="css/02/02-3%20plastic.png" style="position:absolute;width:30%;top:15%;left:15%;">
+        <img class="scrollable dropshadow1" data-top=15 data-top2=80 data-left=15 data-left2=50 data-width=30 data-width2=40 src="css/02/02-3%20plastic.png" style="position:absolute;width:110%;top:15%;left:15%;">
+        <img class="scrollable dropshadow1" data-top=15 data-top2=80 data-left=15 data-left2=50 data-width=30 data-width2=40 src="css/02/02-4%20bottom%20land.png" style="position:absolute;width:110%;top:15%;left:15%;">
+        <img class="scrollable dropshadow1" data-top=15 data-top2=80 data-left=15 data-left2=50 data-width=30 data-width2=40 src="css/02/02-6%20content.png" style="position:absolute;width:110%;top:15%;left:15%;">
+    </div>
+
+
+    <div class="container-fluid" style="background-color:darkgrey;min-height: 1800px"></div>
+
+    <div id="div3" class="container-fluid innershadow1" style="background-color:black;height:200vh;position:relative;">
+        <img class="scrollable dropshadow1" data-left=100 data-left2=60 src="css/03/03-2%20plastic.png" style="position:absolute;width:20%;top:50%;left:100%;">
+        <img class="scrollable dropshadow1" data-left=0 data-left2=30 src="css/03/03-3%20content.png" style="position:absolute;width:30%;top:50%;left:0%;">
+    </div>
+
+
+    <div class="container-fluid" style="background-color:darkgrey;min-height: 1800px"></div>
+
+
+
+    <div class="container-fluid" style="background-color:darkgrey;min-height: 1800px"></div>
+
+
+
+    <script>
+        $(document).ready(function() {
+            var winh = $(window).height();
+            $(window).scroll(function() {
+                var scrolled = $(window).scrollTop();
+                $(".scrollable").each(function() {
+                    var parent_pos = $(this).parent().offset().top;
+                    var next_pos = $(this).parent().next().offset().top;
+                    var parent_height = $(this).parent().height();
+                    var parent_scrolled = scrolled - $(this).parent().offset().top;
+                    if (parent_scrolled > 0 && scrolled < next_pos - winh) {
+
+                        if ($(this).attr("data-left")) {
+                            $(this).css('left', (($(this).data('left2') - $(this).data('left')) * parent_scrolled / winh + $(this).data('left')) + '%');
+                        }
+                        if ($(this).attr("data-top")) {
+                            $(this).css('top', (($(this).data('top2') - $(this).data('top')) * parent_scrolled / winh + $(this).data('top')) + '%');
+                        }
+                        if ($(this).attr("data-width")) {
+                            $(this).css('width', (($(this).data('width2') - $(this).data('width')) * parent_scrolled / winh + $(this).data('width')) + '%');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>
