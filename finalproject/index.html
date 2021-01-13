@@ -10,7 +10,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-    <title>web109-1 Group12</title>
+    <title>極具潛力的永續材料-木質素塑膠</title>
+    <style>
+        .spot {
+            background-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 50%, #9eff9b 0);
+            background-position: 0;
+            background-size: 200%;
+            transition: all .8s;
+            /* //transition all property  */
+            font-weight: 400;
+        }
+
+        .spotted {
+            background-position: -100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -108,11 +122,11 @@
         <div style="height: 30vh"></div>
         <div style="height: 20vh;">
             <p id="text1" style="text-align: center; padding-left: 10vw; padding-right: 10vw;font-weight: bold">
-                木質素塑膠，取自木材，是可再生材料。</p>
+                <span class="spot">木質素塑膠，取自木材，是可再生材料。</span></p>
             <h1 class="content1" style="text-align: center; padding-left: 5vw; padding-right: 5vw;margin-top: -10px;">
                 近年來，高分子學界研究木質素的化學結構及組成特性，開發出木質素生質材料。</h1>
             <h1 class="content1" style="text-align: center; padding-left: 5vw; padding-right: 5vw;">
-                「木質素塑膠」的原料來自可再生的木材，有望成為新一代永續材料取代石化塑膠。</h1>
+                <span class="spot">「木質素塑膠」的原料來自可再生的木材</span>，有望成為新一代永續材料取代石化塑膠。</h1>
         </div>
         <div style="height: 30vh;"></div>
         <div class="row">
@@ -134,7 +148,8 @@
                         <h1 id="targetText" style="text-align: left; padding-left: 10vw; padding-right: 10vw; padding-top: 2.5vh;
                         color:white;
                         text-indent: 1em;">
-                            傳統工業造紙的製漿工法用亞硫酸鹽溶液或鹼溶液蒸煮植物原料除去木質素，再將纖維素及半纖維素加工成紙，溶解出的木質素溶液稱為「黑液」，被工廠做為燃料處理。</h1>
+                            傳統工業造紙的製漿工法用亞硫酸鹽溶液或鹼溶液蒸煮植物原料除去木質素，再將纖維素及半纖維素加工成紙，溶解出的木質素溶液稱為「黑液」，被工廠做為燃料處理。
+                        </h1>
                     </div>
                 </div>
             </div>
@@ -181,7 +196,9 @@
                 <p style="font-weight:bold">木質素塑膠的隱藏缺點</p>
             </div>
             <div class="content1">
-                <p style="color:black;padding-top: 10px;"> 由於木質素是生質材料，結構比較複雜且變異性大，工業技術門檻較高，因此木質素塑膠產品品質容易不穩定。</p>
+                <span class="spot">「木質素塑膠」的原料來自可再生的木材，有望成為新一代永續材料取代石化塑膠。</h1>
+                    <p style="color:black;padding-top: 10px;"> <span
+                            class="spot">由於木質素是生質材料，結構比較複雜且變異性大</span>，工業技術門檻較高，因此木質素塑膠產品品質容易不穩定。</p>
             </div>
 
         </div>
@@ -207,7 +224,8 @@
                 <p style="font-weight:bold">石化塑膠的絕對優勢</p>
             </div>
             <div class="content1">
-                <p style="color:black;padding-top: 10px"> 相對的，工廠能用石化原料以便宜很多的製程做出品質穩定的塑膠。但石化原料不可再生，石化塑膠又難以分解，又是不得不思考的問題。
+                <p style="color:black;padding-top: 10px"> 相對的，<span
+                        class="spot">工廠能用石化原料以便宜很多的製程做出品質穩定的塑膠。但石化原料不可再生，石化塑膠又難以分解</span>，又是不得不思考的問題。
                 </p>
             </div>
         </div>
@@ -231,7 +249,8 @@
             <div class="content1">
                 <p
                     style="color: white;padding-left:  15%;padding-right:15%;text-align:left;margin-top: -20px;text-indent : 1em ;">
-                    儘管木質素塑膠擁有諸多優點，但在真正民用前還有一段路要走。如前所述木質素塑膠主要的問題是品質不穩定和製程成本高的問題。學界仍有科學家在持續努力，改善木質素塑膠的製程。</p>
+                    儘管木質素塑膠擁有諸多優點，但在真正民用前還有一段路要走。<span
+                        class="spot">如前所述木質素塑膠主要的問題是品質不穩定和製程成本高的問題。</span>學界仍有科學家在持續努力，改善木質素塑膠的製程。</p>
                 <p
                     style="color: white;padding-left:  15%;padding-right:15%;text-align:left;text-indent : 1em ;margin-top: -15px">
                     期待有一天，我們能讓木質素塑膠民生化成為可能，我們能以永續材料逐步取代不可再生的石化塑膠。</p>
@@ -501,6 +520,15 @@
 
             });
 
+        });
+        $(window).scroll(function () { //when scrolling
+            var current_pos = $(document).scrollTop();
+            var winh = $(window).height();
+            $(".spot").each(function () {
+                if (current_pos > $(this).offset().top - winh / 2) {
+                    $(this).addClass("spotted");
+                }
+            });
         });
     </script>
 
