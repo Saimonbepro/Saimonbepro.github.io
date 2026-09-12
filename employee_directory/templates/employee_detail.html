@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+    <h2>員工詳細資料</h2>
+
+    <div>
+
+        <a href="{{ url_for('edit_employee', employee_id=employee['id']) }}" class="btn btn-warning">
+            修改資料
+        </a>
+
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">
+            返回清單
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="card">
+
+    <div class="card-header bg-primary text-white">
+
+        <h4 class="mb-0">
+            {{ employee['employee_no'] }}
+            - {{ employee['chinese_name'] }}
+        </h4>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+
+                <strong>員工編號</strong>
+
+                <div class="form-control bg-light">
+                    {{ employee['employee_no'] }}
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+
+                <strong>中文姓名</strong>
+
+                <div class="form-control bg-light">
+                    {{ employee['chinese_name'] }}
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+
+                <strong>英文姓名</strong>
+
+                <div class="form-control bg-light">
+                    {{ employee['english_name'] }}
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+
+                <strong>所屬部門</strong>
+
+                <div class="form-control bg-light">
+                    {{ employee['department'] }}
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+
+                <strong>職稱</strong>
+
+                <div class="form-control bg-light">
+                    {{ employee['position'] }}
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+
+                <strong>公司電子郵件</strong>
+
+                <div class="form-control bg-light">
+                    {{ employee['email'] }}
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+
+                <strong>分機號碼</strong>
+
+                <div class="form-control bg-light">
+                    {{ employee['extension'] }}
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+
+                <strong>行動電話</strong>
+
+                <div class="form-control bg-light">
+                    {{ employee['mobile'] }}
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+
+                <strong>辦公地點</strong>
+
+                <div class="form-control bg-light">
+                    {{ employee['office_location'] }}
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+
+                <strong>到職日期</strong>
+
+                <div class="form-control bg-light">
+                    {{ employee['hire_date'] }}
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+
+                <strong>在職狀態</strong>
+
+                <div class="form-control bg-light">
+
+                    {% if employee['status'] == '在職' %}
+
+                    <span class="badge bg-success">
+                        在職
+                    </span>
+
+                    {% elif employee['status'] == '離職' %}
+
+                    <span class="badge bg-danger">
+                        離職
+                    </span>
+
+                    {% else %}
+
+                    <span class="badge bg-warning text-dark">
+                        留職停薪
+                    </span>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

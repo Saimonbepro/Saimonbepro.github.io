@@ -1,0 +1,306 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+    <h2>後台異動紀錄</h2>
+
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">
+        返回員工清單
+    </a>
+
+</div>
+
+
+<!-- 查詢區 -->
+<div class="card mb-4">
+
+    <div class="card-body">
+
+        <form method="GET" class="row g-3">
+
+            <div class="col-md-5">
+
+                <label class="form-label">
+                    關鍵字
+                </label>
+
+                <input type="text" name="keyword" class="form-control" placeholder="員工編號、操作者、IP、結果..."
+                    value="{{ keyword }}">
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <label class="form-label">
+                    操作類型
+                </label>
+
+                <select name="operation" class="form-select">
+
+                    <option value="">
+                        全部操作
+                    </option>
+
+                    <option value="新增" {% if selected_operation=='新增' %} selected {% endif %}>
+                        新增
+                    </option>
+
+                    <option value="修改" {% if selected_operation=='修改' %} selected {% endif %}>
+                        修改
+                    </option>
+
+                    <option value="刪除" {% if selected_operation=='刪除' %} selected {% endif %}>
+                        刪除
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="col-md-2">
+
+                <label class="form-label">
+                    排序
+                </label>
+
+                <select name="sort" class="form-select">
+
+                    <option value="newest" {% if selected_sort=='newest' %} selected {% endif %}>
+                        最新在前
+                    </option>
+
+                    <option value="oldest" {% if selected_sort=='oldest' %} selected {% endif %}>
+                        最舊在前
+                    </option>
+
+                    <option value="employee" {% if selected_sort=='employee' %} selected {% endif %}>
+                        依員工編號
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="col-md-2 d-flex align-items-end">
+
+                <button type="submit" class="btn btn-primary me-2">
+                    查詢
+                </button>
+
+                <a href="{{ url_for('audit_logs') }}" class="btn btn-secondary">
+                    清除
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- 紀錄表 -->
+<div class="card">
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>編號</th>
+
+                        <th>操作</th>
+
+                        <th>時間</th>
+
+                        <th>操作者</th>
+
+                        <th>員工編號</th>
+
+                        <th>異動前內容</th>
+
+                        <th>異動後內容</th>
+
+                        <th>結果</th>
+
+                        <th>來源 IP</th>
+
+                        <th>裝置資訊</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for log in logs %}
+
+                    <tr>
+
+                        <td>
+                            {{ log['id'] }}
+                        </td>
+
+
+                        <td>
+
+                            {% if log['operation'] == '新增' %}
+
+                            <span class="badge bg-success">
+                                新增
+                            </span>
+
+                            {% elif log['operation'] == '修改' %}
+
+                            <span class="badge bg-warning text-dark">
+                                修改
+                            </span>
+
+                            {% elif log['operation'] == '刪除' %}
+
+                            <span class="badge bg-danger">
+                                刪除
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <td>
+                            {{ log['operation_time'] }}
+                        </td>
+
+
+                        <td>
+                            {{ log['operator'] }}
+                        </td>
+
+
+                        <td>
+                            {{ log['employee_no'] or '-' }}
+                        </td>
+
+
+                        <td style="min-width: 300px;">
+
+                            {% if log['before_data'] %}
+
+                            <details>
+
+                                <summary>
+                                    查看異動前資料
+                                </summary>
+
+                                <pre class="small mt-2">{{ log['before_data'] }}</pre>
+
+                            </details>
+
+                            {% else %}
+
+                            <span class="text-muted">
+                                無
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <td style="min-width: 300px;">
+
+                            {% if log['after_data'] %}
+
+                            <details>
+
+                                <summary>
+                                    查看異動後資料
+                                </summary>
+
+                                <pre class="small mt-2">{{ log['after_data'] }}</pre>
+
+                            </details>
+
+                            {% else %}
+
+                            <span class="text-muted">
+                                無
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <td>
+
+                            {% if log['result'] == '成功' %}
+
+                            <span class="badge bg-success">
+                                成功
+                            </span>
+
+                            {% else %}
+
+                            <span class="badge bg-danger">
+                                {{ log['result'] }}
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <td>
+                            {{ log['ip_address'] }}
+                        </td>
+
+
+                        <td style="min-width: 300px;">
+
+                            <small>
+                                {{ log['user_agent'] }}
+                            </small>
+
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+
+                        <td colspan="10" class="text-center text-muted py-4">
+                            目前沒有符合條件的異動紀錄。
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div class="text-muted">
+            共 {{ logs|length }} 筆異動紀錄
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
